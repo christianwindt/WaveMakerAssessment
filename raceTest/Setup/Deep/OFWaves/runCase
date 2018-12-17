@@ -1,0 +1,47 @@
+#!/bin/bash
+
+mkdir 0
+
+echo blockMesh meshing...
+blockMesh > blockMesh.log
+
+echo Preparing 0 folder...
+rm -fr 0
+cp -r 0.org 0
+
+topoSet -dict system/topoSetDict3
+refineMesh -dict system/refineMeshDict3 -overwrite
+topoSet -dict system/topoSetDict4
+refineMesh -dict system/refineMeshDict4 -overwrite
+topoSet -dict system/topoSetDict5
+refineMesh -dict system/refineMeshDict5 -overwrite
+topoSet -dict system/topoSetDict6
+refineMesh -dict system/refineMeshDict6 -overwrite 
+topoSet -dict system/topoSetDict7
+refineMesh -dict system/refineMeshDict7 -overwrite 
+topoSet -dict system/topoSetDict8
+refineMesh -dict system/refineMeshDict8 -overwrite 
+topoSet -dict system/topoSetDict9
+refineMesh -dict system/refineMeshDict9 -overwrite     
+
+echo Setting the fields...
+setFields > setFields.log
+
+echo Parallelise
+#decomposePar > decomposePar.log
+
+echo Running...
+#mpirun -np 3 interFoam -parallel > interFoam.log
+interFoam > interFoam.log
+
+echo Simulation complete.
+
+echo Start PostProcessing
+
+cp postProcessing/waveprobes/0/alpha.water PalProbes.mat
+sed -i s/"#"/"%"/g PalProbes.mat
+
+cp postProcessing/interfaceHeight1/0/height.dat OFProbes.mat
+sed -i s/"#"/"%"/g OFProbes.mat
+
+octave Post.m

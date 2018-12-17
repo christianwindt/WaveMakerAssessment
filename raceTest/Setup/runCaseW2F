@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Deep/OFWaves
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Deep/olaDyM
+#./cleanCase
+#./runCase
+
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Deep/olaFoam
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Deep/w2f
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Poly/olaFoam
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Poly/olaDyM
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Poly/w2f
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/shallow/olaFoam
+#./cleanCase
+#./runCase
+
+#cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/shallow/olaDyM
+#./cleanCase
+#./runCase
+
+cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/shallow/w2f
+./cleanCase
+./runCase
+
+cd ~/OpenFOAM/Tanks/2018/resubmissionBenchmark/raceTest/runs/Poly/w2f
+./cleanCase
+./runCase

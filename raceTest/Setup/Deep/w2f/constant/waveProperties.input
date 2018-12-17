@@ -1,0 +1,83 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      environmentalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+seaLevel	0.00;
+
+// A list of the relaxation zones in the simulation. The parameters are given
+// in <name>Coeffs below.
+relaxationNames (inlet outlet);
+
+initializationName inlet;
+
+inletCoeffs
+{
+    // Wave type to be used at boundary "inlet" and in relaxation zone "inlet"
+    waveType    stokesSecond;  
+    debug	off;    
+    // Ramp time of 2 s
+    Tsoft       0.8;
+
+    // Water depth at the boundary and in the relaxation zone
+    depth       70;
+
+    // Wave period
+    period      8;
+
+    // Phase shift in the wave
+    phi         0.000000;
+
+    // Wave number vector, k. 
+    direction  (1.0 0.0 0.0);
+
+    // Wave height
+    height      1.5;
+    
+    // Specifications on the relaxation zone shape and relaxation scheme
+    relaxationZone
+    {
+        relaxationScheme Spatial;
+        relaxationShape  Rectangular;
+        beachType        Empty;
+    
+        relaxType   INLET;
+        startX      (-200 	0.0 	-70);
+        endX        (0 		5.0  	7);
+        orientation (1.0 	0.0 	0.0);
+    }
+};
+
+outletCoeffs
+{
+    waveType    potentialCurrent;
+    U           (0 0 0);
+    Tsoft       0;
+
+    relaxationZone
+    {
+        relaxationScheme Spatial;
+        relaxationShape  Rectangular;
+        beachType        Empty;    
+
+        relaxType   OUTLET;
+        startX      (200 0.0 -70);
+        endX        (400 5.0  7);
+        orientation      (1.0 0.0 0.0);
+    }
+};
+
+
+
+// ************************************************************************* //

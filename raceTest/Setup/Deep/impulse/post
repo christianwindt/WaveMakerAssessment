@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cp postProcessing/waveprobes/0/alpha.water PalProbes.mat
+sed -i s/"#"/"%"/g PalProbes.mat
+
+cp postProcessing/interfaceHeight1/0/height.dat OFProbes.mat
+sed -i s/"#"/"%"/g OFProbes.mat
+
+#octave Post.m
