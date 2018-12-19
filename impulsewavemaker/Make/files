@@ -1,0 +1,5 @@
+velocityseries.C
+relaxation.C
+interFoam.C
+
+EXE = $(FOAM_USER_APPBIN)/interFoamUsrc
